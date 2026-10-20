@@ -47,7 +47,11 @@ export default function App() {
     window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey)
   }, [active, go])
 
-  const projectList = useMemo(() => projects.filter(project => filter === 'All' || project.category.toLowerCase().includes(filter.toLowerCase())), [filter])
+  const projectList = useMemo(() => projects.filter(project => {
+    if (filter === 'All') return true
+    if (filter === 'Web apps') return project.category === 'Web application'
+    return project.category.toLowerCase().includes(filter.toLowerCase())
+  }), [filter])
   const open = (shot: Shot) => setLightbox(shot)
   const copyHex = async (hex: string) => { try { await navigator.clipboard.writeText(hex); setToast(`Copied ${hex}`); setTimeout(() => setToast(''), 1800) } catch { setToast(hex); setTimeout(() => setToast(''), 1800) } }
 
