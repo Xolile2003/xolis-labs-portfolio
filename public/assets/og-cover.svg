@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs><radialGradient id="glow"><stop stop-color="#ff7a26" stop-opacity=".17"/><stop offset="1" stop-color="#141414" stop-opacity="0"/></radialGradient></defs>
+  <path fill="#141414" d="M0 0h1200v630H0z"/><ellipse cx="90" cy="60" rx="530" ry="480" fill="url(#glow)"/>
+  <rect x="74" y="74" width="5" height="482" rx="3" fill="#ff7a26"/>
+  <text x="118" y="242" fill="#f5f3ef" font-family="Arial,sans-serif" font-size="32" letter-spacing="8">XOLI'S LABS</text>
+  <text x="110" y="362" fill="#f5f3ef" font-family="Arial,sans-serif" font-size="76" font-weight="700">Xolile Ludidi</text>
+  <text x="115" y="428" fill="#ff7a26" font-family="Arial,sans-serif" font-size="43" font-weight="700">Ideas into digital experiences.</text>
+  <text x="118" y="520" fill="#b8b5ae" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">DESIGN · CODE · EXPERIMENTATION</text>
+</svg>
