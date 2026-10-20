@@ -7,6 +7,10 @@ export const navItems = [
   ['reflection', 'Reflection'], ['contact', 'Contact'],
 ] as const
 
+export const primaryNavItems = [
+  ['cover', 'Home'], ['about', 'About'], ['projects', 'Projects'], ['skills', 'Skills'], ['contact', 'Contact'],
+] as const
+
 export const projects: Project[] = [
   { id: 'case-xolis-labs', name: "xoli's labs", category: 'Brand identity', intro: 'A visual identity for a creative technology studio.', stack: ['Illustrator', 'Identity'] },
   { id: 'case-quickspot', name: 'quickspot', category: 'Web application', intro: 'Campus appointment booking application.', stack: ['React', 'Vite', 'Node.js', 'Express'] },
@@ -37,8 +41,9 @@ export const reflection = [
 ] as const
 
 export const contacts = [
-  ['Email', '[INSERT PROFESSIONAL EMAIL]'], ['Portfolio', '[INSERT PORTFOLIO WEBSITE]'],
-  ['GitHub', '[INSERT GITHUB URL]'], ['LinkedIn', '[INSERT LINKEDIN URL]'],
+  ['Email', 'mailto:Ludidixolilexolile@gmail.com', 'Ludidixolilexolile@gmail.com'],
+  ['Portfolio', 'https://xolile2003.github.io/xolis-labs-portfolio', 'View portfolio'],
+  ['GitHub', 'https://xolile2003.github.io/Xolile-Web/', 'Visit GitHub site'],
 ] as const
 
 export const gallery = {

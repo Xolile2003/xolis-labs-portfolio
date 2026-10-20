@@ -3,10 +3,10 @@ import { ArrowDown, ArrowRight, Menu, X } from 'lucide-react'
 import { Card, Section } from './components/Section'
 import { Frame, type Shot } from './components/Frame'
 import { Lightbox } from './components/Lightbox'
-import { contacts, gallery, navItems, processSteps, projects, reflection, skills } from './content'
+import { contacts, gallery, navItems, primaryNavItems, processSteps, projects, reflection, skills } from './content'
 
 const sectionIds: string[] = navItems.map(([id]) => id)
-const placeholder = (value: string) => value.startsWith('[')
+const primarySection = (id: string) => id.startsWith('case-') ? 'projects' : ['studio', 'purpose', 'system', 'process', 'reflection'].includes(id) ? 'about' : id
 
 export default function App() {
   const [active, setActive] = useState('cover')
@@ -64,7 +64,7 @@ export default function App() {
       <button className="brand-mark" onClick={() => go('cover')} aria-label="Xoli's LABS home"><img src="./assets/logo-xolis-labs.svg" alt="Xoli's LABS" /></button>
       <nav className={`nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Section navigation">
         <button className="nav-close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></button>
-        {navItems.map(([id, label]) => <a key={id} href={`#${id}`} className={active === id ? 'active' : ''} aria-current={active === id ? 'location' : undefined} onClick={event => { event.preventDefault(); go(id) }}>{label}</a>)}
+        {primaryNavItems.map(([id, label]) => <a key={id} href={`#${id}`} className={primarySection(active) === id ? 'active' : ''} aria-current={primarySection(active) === id ? 'location' : undefined} onClick={event => { event.preventDefault(); go(id) }}>{label}</a>)}
       </nav>
       <button className="menu-toggle" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}>{menuOpen ? <X /> : <Menu />}</button>
     </header>
@@ -108,7 +108,7 @@ export default function App() {
 
       <Section id="reflection" eyebrow="REFLECTION AND FUTURE DEVELOPMENT"><h2 id="reflection-title">what the work shows, and <em>what's next</em>.</h2><p className="lead">These projects show a growing range across design and full-stack development. They are learning projects, and the next steps are about maturity.</p><div className="reflection-grid">{reflection.map(([title,copy],i)=><Card key={title} label={String(i+1).padStart(2,'0')} title={title}>{copy}</Card>)}</div></Section>
 
-      <Section id="contact" eyebrow="LET'S MAKE SOMETHING"><div className="contact-content"><img className="contact-mark" src="./assets/logo-xolis-labs.svg" alt="Xoli's LABS pen nib mark" /><p className="contact-lockup">&lt;/&gt; XOLI'S LABS</p><h2 id="contact-title">LET'S BUILD SOMETHING <strong>MEANINGFUL.</strong></h2><p className="hero-tagline">Ideas into digital experiences.</p><div className="contact-grid">{contacts.map(([label,value])=>{ const link = !placeholder(value); const href = label==='Email' ? `mailto:${value}` : value; return <div className="contact-item" key={label}><p className="eyebrow">{label}</p>{link ? <a href={href} target={label==='Email'?undefined:'_blank'} rel={label==='Email'?undefined:'noopener noreferrer'}>{value}</a> : <span>{value}</span>}</div> })}</div><p className="copyright">Xolile Ludidi · 2026</p></div></Section>
+      <Section id="contact" eyebrow="LET'S MAKE SOMETHING"><div className="contact-content"><img className="contact-mark" src="./assets/logo-xolis-labs.svg" alt="Xoli's LABS pen nib mark" /><p className="contact-lockup">&lt;/&gt; XOLI'S LABS</p><h2 id="contact-title">LET'S BUILD SOMETHING <strong>MEANINGFUL.</strong></h2><p className="hero-tagline">Ideas into digital experiences.</p><div className="contact-grid">{contacts.map(([label,href,text])=><div className="contact-item" key={label}><p className="eyebrow">{label}</p><a href={href} target={label==='Email'?undefined:'_blank'} rel={label==='Email'?undefined:'noopener noreferrer'}>{text}</a></div>)}</div><p className="copyright">Xolile Ludidi · 2026</p></div></Section>
     </main>
     <aside className="section-counter" aria-live="polite"><span>XOLI'S LABS · XOLILE LUDIDI</span><b>{String(sectionIds.indexOf(active)+1).padStart(2,'0')} / {String(sectionIds.length).padStart(2,'0')}</b></aside>
     <button className="help-button" onClick={() => setShowHelp(v=>!v)} aria-label="Keyboard shortcuts">?</button>
